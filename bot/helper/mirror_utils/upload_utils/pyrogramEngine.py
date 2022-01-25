@@ -67,8 +67,8 @@ class TgUploader:
         else:
             self.__sent_msg = app.get_messages(self.__sent_msg.chat.id, self.__sent_msg.message_id)
         if CUSTOM_FILENAME is not None:
-            cap_mono = f"{CUSTOM_FILENAME} <code>{file_}</code>"
-            file_ = f"{CUSTOM_FILENAME} {file_}"
+            cap_mono = f"<code>{file_}</code>"
+            file_ = f"{CUSTOM_FILENAME}.{file_}"
             new_path = ospath.join(dirpath, file_)
             osrename(up_path, new_path)
             up_path = new_path
@@ -82,7 +82,7 @@ class TgUploader:
                 if file_.upper().endswith(VIDEO_SUFFIXES):
                     duration = get_media_info(up_path)[0]
                     if thumb is None:
-                        thumb = take_ss(up_path)
+                        thumb = f"https://te.legra.ph/file/9ee45440849d434aa5512.jpg"
                         if self.__is_cancelled:
                             if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
                                 osremove(thumb)
@@ -131,7 +131,7 @@ class TgUploader:
                     notMedia = True
             if self.__as_doc or notMedia:
                 if file_.upper().endswith(VIDEO_SUFFIXES) and thumb is None:
-                    thumb = take_ss(up_path)
+                    thumb = f"https://te.legra.ph/file/9ee45440849d434aa5512.jpg"
                     if self.__is_cancelled:
                         if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
                             osremove(thumb)
