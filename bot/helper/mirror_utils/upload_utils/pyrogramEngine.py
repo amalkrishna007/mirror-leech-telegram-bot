@@ -82,7 +82,7 @@ class TgUploader:
                 if file_.upper().endswith(VIDEO_SUFFIXES):
                     duration = get_media_info(up_path)[0]
                     if thumb is None:
-                        thumb = "https://te.legra.ph/file/9ee45440849d434aa5512.jpg"
+                        thumb = "/app/bot/IMG_20220125_222441_373.jpg"
                         if self.__is_cancelled:
                             if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
                                 osremove(thumb)
@@ -131,7 +131,7 @@ class TgUploader:
                     notMedia = True
             if self.__as_doc or notMedia:
                 if file_.upper().endswith(VIDEO_SUFFIXES) and thumb is None:
-                    thumb = "https://te.legra.ph/file/9ee45440849d434aa5512.jpg"
+                    thumb = "/app/bot/IMG_20220125_222441_373.jpg"
                     if self.__is_cancelled:
                         if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
                             osremove(thumb)
